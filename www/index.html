@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Riffle App</title>
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link rel="stylesheet" href="css/ionic.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script src="js/ionic.bundle.min.js"></script>
+
+        <!-- this contains our module and view call -->
+        <script src="js/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </head>
+
+    <body ng-app="slide" ng-controller="RiffleFeed">
+
+        <ion-side-menus>
+            <ion-pane ion-side-menu-content>
+
+<!-- Begin center content -->
+                <header class="bar bar-header bar-energized">
+                    <button class="button button-icon" ng-click="toggleMenu()">
+                      <i class="icon ion-navicon"></i>
+                    </button>
+                    <h1 class="title">Riffle</h1>
+                    <button class="button button-icon" ng-click="newTask()">
+                        <i class="icon ion-ios7-mic"></i>
+                    </button>
+                </header>
+<!-- End center content -->
+
+                <ion-content has-header="true" scroll="false">
+
+<!-- Begin list repeat -->
+
+                <ion-list>
+                  <ion-item ng-repeat="item in items" item="item">
+                  </ion-item>
+                </ion-list>
+
+                <!-- OR -->
+
+                <ion-list>
+                    <ion-item ng-repeat="task in tasks">
+                        {{task.title}}
+                    </ion-item>
+                </ion-list>
+
+<!-- End list repeat -->
+
+            </ion-content>
+        </ion-pane>
+
+<!-- Begin left menu -->
+        <ion-side-menu side="left" width="270">
+          <header class="bar bar-header bar-energized">
+            <h1 class="title">Menu</h1>
+          </header>
+          <div class="item item-divider">
+            Candy Bars
+          </div>
+          <div class="list">
+            <a class="item" href="#">
+              Find Friends
+            </a>
+            <a class="item" href="#">
+              Notifications
+            </a>
+            <a class="item" href="#">
+              Profile
+            </a>
+          </div>
+        </ion-side-menu>
+<!-- End left menu -->
+
+      </ion-side-menus>
+
+<script id="new-task.html" type="text/ng-template">
+
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <header class="bar bar-header bar-secondary">
+      <h1 class="title">New Task</h1>
+      <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+    </header>
+
+    <!-- Modal content area -->
+    <ion-content has-header="true">
+
+      <form ng-submit="createTask(task)">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+          </label>
+        </div>
+        <div class="padding">
+          <button type="submit" class="button button-block button-positive">Create Task</button>
+        </div>
+      </form>
+
+    </ion-content>
+
+  </div>
+
+</script>
+
+<!-- 
+        <ion-side-menus>
+
+            <ion-pane ion-side-menu-content>
+                <div class="bar bar-header bar-energized">
+                  <button class="button icon ion-navicon"></button>
+                  <h1 class="title">Riffle</h1>
+                </div>
+            </ion-pane>
+
+            <ion-side-menu side="left">
+                <header class="bar bar-header bar-energized">
+                    <h1 class="title">Menu</h1>
+                </header>
+            </ion-side-menu>
+
+        </ion-side-menus>
+-->
+    </body>
+</html>
