@@ -17,16 +17,16 @@ id
 created_at
 modified_at
 
-**userSound**
+**userSound Join**
 user_id
 sound_id
 
-**riffleSound**
+**riffleSound Join**
 riffle_id
 sound_id
 sequence
 
-**userRiffle**
+**userRiffle Join**
 riff_id
 user_id
 created_at
